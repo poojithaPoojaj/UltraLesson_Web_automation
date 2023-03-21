@@ -39,58 +39,5 @@ public class SearchTests {
         Assert.assertTrue(searchItems.stream().allMatch(item -> item.getName().contains(searchKey)));
 
     }
-//
-//    @Test
-//    public void veriftAbleToSearchUnAvailableProduct() {
-//        WebDriver webdriver = null;
-//        String searchItem = "Jeans";
-//
-//        LauncherPage launcherPage = new LauncherPage(webdriver); // Assume webdriver is created and handy
-//        launcherPage.navigateTo("https://web-playground.ultralesson.com/");
-//
-//        //Act
-//        HomePage homepage = new HomePage(webdriver);
-//        homepage.search(searchItem);
-//        List<Item> searchItems = homepage.getSearchItems();
-//        for (int i = 0; i < searchItems.size(); i++) {
-//            if (searchItems.get(i).getName().equalsIgnoreCase("Jeans")) {
-//                Assert.assertEquals(true, false);
-//                return;
-//            }
-//        }
-//        Assert.assertEquals(false, false);
-//    }
-//
-//    @Test
-//    public void veriftItemsAreListedBasedOnBrand() {
-//        WebDriver webdriver = null;
-//        String searchItem = "Jeans";
-//        LauncherPage launcherPage = new LauncherPage(webdriver); // Assume webdriver is created and handy
-//        launcherPage.navigateTo("https://web-playground.ultralesson.com/");
-//
-//        //Act
-//        HomePage homePage = new HomePage(webdriver);
-//        homePage.search(searchItem);
-//        List<Item> searchItems = homePage.getSearchItems();
-//
-//        //Assert
-//        Assert.assertEquals(4, searchItems.size());
-//    }
-//
-//
-//        @Test
-//        public void verifyResultPageItemsAreEqualToDisplayedItems () {
-//            WebDriver webdriver = null;
-//            String searchItem = "Jeans";
-//            LauncherPage launcherPage = new LauncherPage(webdriver); // Assume webdriver is created and handy
-//            launcherPage.navigateTo("https://web-playground.ultralesson.com/");
-//
-//            //Act
-//            HomePage homepage = new HomePage(webdriver);
-//            homepage.search(searchItem);
-//            List<Item> searchItems = homepage.getSearchItems();
-//
-//            //Assert
-//            Assert.assertEquals(4, searchItems.size());
-//        }
+
     }
