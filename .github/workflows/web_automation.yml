@@ -45,6 +45,8 @@ jobs:
           cache: gradle
       - name: setup chrome
         uses: browser-actions/setup-chrome@latest
+      - name: setup firefox
+        uses: browser-actions/setup-firefox@latest
       - name: Run Web Tests
         uses: gradle/gradle-build-action@4137be6a8bf7d7133955359dbd952c0ca73b1021
         with:
