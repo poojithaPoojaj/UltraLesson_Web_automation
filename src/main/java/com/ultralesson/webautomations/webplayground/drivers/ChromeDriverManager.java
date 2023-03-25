@@ -11,40 +11,28 @@ import java.util.Map;
 
 
 public class ChromeDriverManager implements DriverManager<WebDriver>{
-//    @Override
-//    public WebDriver create() {
-//        return new io.github.bonigarcia.wdm.managers.ChromeDriverManager().create();
-//
-//    }
+
+    public ChromeOptions getChromeDriver() {
+        WebDriverManager.chromedriver().setup();
+        ChromeOptions options=new ChromeOptions();
+        options.addArguments("--remote-allow-origins=*");
+        return options;
+    }
 
 
     @Override
     public WebDriver create() {
-//        if(Toggles.HEADLESS.isOn()) {
-            return createHeadlessChromeDriver();
-//        }
-//        return new io.github.bonigarcia.wdm.managers.ChromeDriverManager().create();
+        return new ChromeDriver(getChromeDriver());
     }
 
     public ChromeDriver createHeadlessChromeDriver() {
-        WebDriverManager.chromedriver().setup();
-                ChromeOptions options=new ChromeOptions();
-                options.addArguments("--remote-allow-origins=*");
-        options.addArguments("--headless=new");
+
+                ChromeOptions options=getChromeDriver();
+                options.addArguments("--headless=new");
                 return new ChromeDriver(options);
-////        new io.github.bonigarcia.wdm.managers.ChromeDriverManager().setup();
-////        ChromeOptions chromeOptions = getHeadlessChromeOptions();
-////        return new ChromeDriver(chromeOptions);
-//        ChromeOptions chromeOptions = new ChromeOptions();
-//        chromeOptions.addArguments("--headless=new");
-//        return chromeOptions;
     }
 
-    private ChromeOptions getHeadlessChromeOptions() {
-        ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.addArguments("--headless=new");
-        return chromeOptions;
-    }
+
     public WebDriver createMobile(){
         Map<String, Object> deviceMetrics = new HashMap<>();
 

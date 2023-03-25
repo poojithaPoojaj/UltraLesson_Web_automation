@@ -39,9 +39,7 @@ public WebDriver createHeadLessBrowser(){
         return browser;
     }
 
-//    public ChromeDriverManager createDriverContext(String browser){
-//
-//    }
+
     public WebDriver createMobile(String browser) {
         switch (browser.toLowerCase()) {
             case "firefox":
