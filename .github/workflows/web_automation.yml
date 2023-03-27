@@ -35,7 +35,7 @@ jobs:
     needs: build
     strategy:
      matrix:
-        version: [ browser-actions/setup-firefox@latest, browser-actions/setup-chrome@latest]
+        version: [ firefox,chrome]
     steps:
       - uses: actions/checkout@v2
       - name: set up JDK 11
@@ -46,7 +46,7 @@ jobs:
           cache: gradle
       - uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.version }}
+          node-version: browser-actions/setup-${{ matrix.version }}@latest
       - name: Run Web Tests
         uses: gradle/gradle-build-action@4137be6a8bf7d7133955359dbd952c0ca73b1021
         with:
