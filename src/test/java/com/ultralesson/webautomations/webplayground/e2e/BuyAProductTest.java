@@ -94,15 +94,15 @@ public class BuyAProductTest {
 //            Assert.assertEquals(orderDetails.getCustomerDetails(), newCustomer);
 //            Assert.assertEquals(orderDetails.getCartSummary(), cartDetailsInShippingPage);
 //        }
-    @Test(groups = "wip")
-    public void verifyThatFirstTimeUserIsAbleToBuyAProduct() {
-        //Arrange
-        Customer newCustomer = new Customer().init();
-        Product productToBuy = new Product().init();
-        WebDriver driver = new DriverCreator().create("chrome");
-        new LauncherPage(driver).navigateTo("https://web-playground.ultralesson.com/");
-
-        //Act
-        //....
-    }
+//    @Test(groups = "wip")
+//    public void verifyThatFirstTimeUserIsAbleToBuyAProduct() {
+//        //Arrange
+//        Customer newCustomer = new Customer().init();
+//        Product productToBuy = new Product().init();
+//        WebDriver driver = new DriverCreator().create("chrome");
+//        new LauncherPage(driver).navigateTo("https://web-playground.ultralesson.com/");
+//
+//        //Act
+//        //....
+//    }
 }
