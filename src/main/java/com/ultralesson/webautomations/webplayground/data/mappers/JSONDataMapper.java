@@ -13,9 +13,13 @@ public class JSONDataMapper implements DataMapper{
     public <T> T map(String file, String key, Class<T> tClass) {
         Gson gson = new Gson();
         try {
+
             Map<String, LinkedTreeMap> jsonMap = gson.fromJson(new FileReader(file), Map.class);
             LinkedTreeMap jsonElement = jsonMap.get(key);
-            if(Objects.isNull(jsonElement)) throw new FileNotFoundException();
+            ;
+            if(Objects.isNull(jsonElement)) {
+                throw new FileNotFoundException();
+            }
             return gson.fromJson(jsonElement.toString(), tClass);
         } catch (FileNotFoundException e) {
             throw new RuntimeException(String.format("Failed to find a data for key %s in file %s or filepath %s itself is wrong", key, file, file));

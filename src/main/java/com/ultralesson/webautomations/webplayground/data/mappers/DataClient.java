@@ -4,8 +4,12 @@ import java.util.Objects;
 
 public abstract class DataClient {
     protected DataMapper dataMapper;
-    public DataClient() {
-        dataMapper = new JSONDataMapper();
+    public DataClient(String formatType) {
+//        if(formatType.equalsIgnoreCase("json"))
+//        dataMapper = new JSONDataMapper();
+//        else
+            dataMapper=new YMLDataMapper();
+        System.out.println("Data Mapper"+dataMapper.toString());
     }
 
     protected String getFilePath(String relativePath) {

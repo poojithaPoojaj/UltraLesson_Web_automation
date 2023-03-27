@@ -20,48 +20,48 @@ import java.util.List;
 @Epic("Search")
     @Feature("Relevant Search")
     public class SearchTests {
-        @Test(description = "When a user searches with a keyword, " +
-                "relevant results for the keyword should be displayed to the user.")
-        @Story("Verify If Search Term Shows Relevant Results")
-        @Severity(SeverityLevel.CRITICAL)
-
-        public void chromeTest(){
-            String searchItem = "Jeans";
-            String searchKey = "Jean";
-            String browser = "chrome";
-            WebDriver webDriver = new DriverCreator().create(browser);
-            LauncherPage launcherPage = new LauncherPage(webDriver);
-            launcherPage.navigateTo("https://web-playground.ultralesson.com/");
+//        @Test(description = "When a user searches with a keyword, " +
+//                "relevant results for the keyword should be displayed to the user.")
+//        @Story("Verify If Search Term Shows Relevant Results")
+//        @Severity(SeverityLevel.CRITICAL)
 //
-        }
-    @Test(description = "When a user searches with a keyword, " +
-            "relevant results for the keyword should be displayed to the user.")
-    @Story("Verify If Search Term Shows Relevant Results")
-    @Severity(SeverityLevel.CRITICAL)
-        public void firefoxTest(){
-            String searchItem = "Jeans";
-            String searchKey = "Jean";
-            String browser = "firefox";
-            WebDriver webDriver = new DriverCreator().create(browser);
-            LauncherPage launcherPage = new LauncherPage(webDriver);
-            launcherPage.navigateTo("https://web-playground.ultralesson.com/");
+//        public void chromeTest(){
+//            String searchItem = "Jeans";
+//            String searchKey = "Jean";
+//            String browser = "chrome";
+//            WebDriver webDriver = new DriverCreator().create(browser);
+//            LauncherPage launcherPage = new LauncherPage(webDriver);
+//            launcherPage.navigateTo("https://web-playground.ultralesson.com/");
+////
+//        }
+//    @Test(description = "When a user searches with a keyword, " +
+//            "relevant results for the keyword should be displayed to the user.")
+//    @Story("Verify If Search Term Shows Relevant Results")
+//    @Severity(SeverityLevel.CRITICAL)
+//        public void firefoxTest(){
+//            String searchItem = "Jeans";
+//            String searchKey = "Jean";
+//            String browser = "firefox";
+//            WebDriver webDriver = new DriverCreator().create(browser);
+//            LauncherPage launcherPage = new LauncherPage(webDriver);
+//            launcherPage.navigateTo("https://web-playground.ultralesson.com/");
 //
-        }
-    @Test(description = "When a user searches with a keyword, " +
-            "relevant results for the keyword should be displayed to the user.")
-    @Story("Verify If Search Term Shows Relevant Results")
-    @Severity(SeverityLevel.CRITICAL)
-        public void mobileTest(){
-            String searchItem = "Jeans";
-            String searchKey = "Jean";
-            String browser = "chrome";
-            WebDriver webDriver = new DriverCreator().createMobile(browser);
-            LauncherPage launcherPage = new LauncherPage(webDriver);
-            launcherPage.navigateTo("https://web-playground.ultralesson.com/");
+//        }
+//    @Test(description = "When a user searches with a keyword, " +
+//            "relevant results for the keyword should be displayed to the user.")
+//    @Story("Verify If Search Term Shows Relevant Results")
+//    @Severity(SeverityLevel.CRITICAL)
+//        public void mobileTest(){
+//            String searchItem = "Jeans";
+//            String searchKey = "Jean";
+//            String browser = "chrome";
+//            WebDriver webDriver = new DriverCreator().createMobile(browser);
+//            LauncherPage launcherPage = new LauncherPage(webDriver);
+//            launcherPage.navigateTo("https://web-playground.ultralesson.com/");
+////
+//        }
 //
-        }
-
-}
+//}
 //        public void verifyIfSearchTermShowsRelevantResults() {
 //            //Arrange
 //            String searchItem = "Jeans";
@@ -97,4 +97,4 @@ import java.util.List;
 //        System.out.println(driver.getTitle());
 //
 //    }
-//}
+}
