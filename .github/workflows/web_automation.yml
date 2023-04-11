@@ -58,7 +58,6 @@ jobs:
       
     - name: Run Chrome with responsive design mode
       run: |
-        
         export CHROME_WINDOW_SIZE=1280,800
         export CHROME_DEVICE_SCALE_FACTOR=1
         export CHROME_ARGS="--disable-infobars --disable-web-security --disable-extensions --disable-translate"
