@@ -42,12 +42,13 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
           cache: gradle
-      
-    
       - name: setup Browsers
-      - uses: browser-actions/setup-browser@latest
+      - uses: abhi1693/setup-browser@v0.3.4
         with:
-          browser: ${{matrix.browser}}      
+         browser: ${{matrix.browser}}      
+         version: latest
+      
+
       - name: Run Web Tests
         uses: gradle/gradle-build-action@4137be6a8bf7d7133955359dbd952c0ca73b1021
         with:
