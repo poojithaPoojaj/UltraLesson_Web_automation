@@ -22,25 +22,18 @@ jobs:
       uses: gradle/gradle-build-action@4137be6a8bf7d7133955359dbd952c0ca73b1021
       with:
         arguments: build
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [windows-latest, macos-latest]
-        browser: [edge, firefox, safari, chrome]
-        exclude:
-          - os: windows-latest
-            browser: safari
-          - os: macos-latest
-            browser: edge
-          - os: macos-latest
-            browser: chrome
-          # Safari workaround is not working in Catalina
-          - browser: safari
-
   web_test:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-22.04, ubuntu-20.04]
+        version: [10, 12, 14]
+    runs-on: ${{ matrix.os }}
     needs: build
     steps:
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.version }}
+
       - uses: actions/checkout@v2
       - name: set up JDK 11
         uses: actions/setup-java@v2
@@ -48,8 +41,8 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
           cache: gradle
-      - name: setup ${{ matrix.browser }}
-        uses: browser-actions/setup-${{ matrix.browser }}
+      - name: setup 
+        uses: browser-actions/setup-chrome@latest
       - name: Run Web Tests
         uses: gradle/gradle-build-action@4137be6a8bf7d7133955359dbd952c0ca73b1021
         with:
