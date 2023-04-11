@@ -44,39 +44,24 @@ jobs:
   responsive_view:
     needs: build
     runs-on: ubuntu-latest
-    
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
-    
+      
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
         node-version: 16
     
-    - name: Install dependencies
-      run: npm ci
-    
-    - name: Run mobile enumeration
+    - name: Install Puppeteer
+      run: npm install puppeteer
+      
+    - name: Run Chrome with responsive design mode
       run: |
-        # Run your mobile enumeration command here
-        # For example:
-        # npx mobile-enumeration -o results.txt
-        echo "Running mobile enumeration..."
-        # Replace the above command with the actual command to run your mobile enumeration tool.
-    
-    - name: Upload results
-      run: |
-        # Upload the results to a cloud storage or an artifact
-        # For example, using GitHub Actions' artifacts:
-        echo '::set-env name=MOBILE_ENUM_RESULTS::results.txt'
-        echo 'Results from mobile enumeration:'
-        cat results.txt >> ${{ env.MOBILE_ENUM_RESULTS }}
-        echo '::set-output name=mobile_enum_results::${{ env.MOBILE_ENUM_RESULTS }}'
-      # Note: `results.txt` is the file containing the results of the mobile enumeration. Modify this step to suit your actual use case.
-    
-    - name: Cleanup
-      run: |
-        # Cleanup any generated files or artifacts
-        rm results.txt
+        
+        export CHROME_WINDOW_SIZE=1280,800
+        export CHROME_DEVICE_SCALE_FACTOR=1
+        export CHROME_ARGS="--disable-infobars --disable-web-security --disable-extensions --disable-translate"
+        npx puppeteer --no-sandbox --disable-setuid-sandbox --window-size="$CHROME_WINDOW_SIZE" --device-scale-factor="$CHROME_DEVICE_SCALE_FACTOR" "$CHROME_ARGS" -e 'await require("puppeteer").launch({headless:true}).then(async browser => {const page = await browser.newPage(); await page.emulate("iPhone 6/7/8"); await page.goto("https://example.com"); await browser.close();});'
+I
 
