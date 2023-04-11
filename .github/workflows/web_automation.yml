@@ -27,7 +27,7 @@ jobs:
       matrix:
         os: [ubuntu-latest,ubuntu-latest]
         version: [10, 12, 14]
-        browsers: [chrome@latest,chrome@latest]
+        browsers: [chrome-latest,chrome-latest]
     runs-on: ${{ matrix.os }}
     needs: build
     steps:
