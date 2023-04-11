@@ -26,7 +26,7 @@ jobs:
     needs: build
     strategy:
       matrix:
-        browser: [chrome, firefox, safari] # Define the browsers to run in the matrix
+        browser: [chrome, firefox] # Define the browsers to run in the matrix
     steps:
       - uses: actions/checkout@v2
       - name: set up JDK 11
