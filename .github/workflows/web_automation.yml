@@ -22,22 +22,22 @@ jobs:
           arguments: build
 
   web_test:
-   runs-on: ubuntu-latest
-   needs: build
-   strategy:
-    matrix:
-      browser: [chrome, firefox, safari]
-   steps:
-    - uses: actions/checkout@v2
-    - name: setup ${{ matrix.browser }}
-      uses: browser-actions/setup-${{ matrix.browser }}@latest
-    - name: Run Web Tests in ${{ matrix.browser }}
-      uses: gradle/gradle-build-action@4137be6a8bf7d7133955359dbd952c0ca73b1021
-      with:
-        arguments: runWebTests -Dbrowser.name=${{ matrix.browser }} -Dbrowser.headless=true
-    - name: Upload API Artifacts
-      uses: actions/upload-artifact@v2
-      if: ${{ always() }}
-      with:
-        name: web_test_${{ matrix.browser }}
-        path: build/web-reports
+    runs-on: ubuntu-latest
+    needs: build
+    strategy:
+      matrix:
+        browser: [chrome, firefox, safari]
+    steps:
+      - uses: actions/checkout@v2
+      - name: setup ${{ matrix.browser }}
+        uses: browser-actions/setup-${{ matrix.browser }}@latest
+      - name: Run Web Tests in ${{ matrix.browser }}
+        uses: gradle/gradle-build-action@4137be6a8bf7d7133955359dbd952c0ca73b1021
+        with:
+          arguments: runWebTests -Dbrowser.name=${{ matrix.browser }} -Dbrowser.headless=true
+      - name: Upload API Artifacts
+        uses: actions/upload-artifact@v2
+        if: ${{ always() }}
+        with:
+          name: web_test_${{ matrix.browser }}
+          path: build/web-reports
