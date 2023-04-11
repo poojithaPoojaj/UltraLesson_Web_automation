@@ -25,7 +25,7 @@ jobs:
   web_test:
     strategy:
       matrix:
-        os: [ubuntu-22.04, ubuntu-20.04]
+        os: [ubuntu-latest,ubuntu-latest]
         version: [10, 12, 14]
     runs-on: ${{ matrix.os }}
     needs: build
