@@ -27,6 +27,7 @@ jobs:
       matrix:
         os: [ubuntu-latest,ubuntu-latest]
         version: [10, 12, 14]
+        browsers: [chrome@latest,chrome@latest]
     runs-on: ${{ matrix.os }}
     needs: build
     steps:
@@ -42,7 +43,7 @@ jobs:
           distribution: 'adopt'
           cache: gradle
       - name: setup 
-        uses: browser-actions/setup-chrome@latest
+        uses: browser-actions/setup-${{ matrix.version }}
       - name: Run Web Tests
         uses: gradle/gradle-build-action@4137be6a8bf7d7133955359dbd952c0ca73b1021
         with:
