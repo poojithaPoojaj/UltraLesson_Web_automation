@@ -35,24 +35,12 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
           cache: gradle
+      - name: Install dependencies
+        run: 
+         npm install -g mobile-enumerator
+      - name: Run mobile enumeration
+        run: 
+         mobile-enumerator --platform=chrome --output=mobile-devices.json
 
-      - name: Install Chrome
-        run: |
-          # Install Chrome
-          sudo apt-get update
-          sudo apt-get install -y libx11-xcb1 libxrandr2 libxcursor1 libxcomposite1 libasound2 libxi6 libxtst6 libxss1 libgl1-mesa-glx
-          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-          sudo dpkg -i google-chrome-stable_current_amd64.deb
-          sudo apt-get install -y -f
-
-      - name: Configure Chrome for mobile emulation
-        run: |
-          # Configure Chrome for mobile emulation
-          export DISPLAY=:99
-          sh -e /etc/init.d/xvfb start
-          sleep 3
-          google-chrome-stable --remote-debugging-port=9222 --disable-gpu --disable-software-rasterizer --no-sandbox --disable-setuid-sandbox --disable-web-security --user-data-dir=/tmp --start-maximized --disable-infobars --disable-extensions --no-first-run --no-sandbox --disable-translate --disable-extensions --disable-background-networking --safebrowsing-disable-auto-update --disable-sync --disable-default-apps --disable-component-update --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-renderer-backgrounding --disable-dev-shm-usage --disable-accelerated-2d-canvas --disable-gpu-sandbox --enable-features=NetworkService,NetworkServiceInProcess --disable-software-rasterizer --disable-perfetto --password-store=basic --use-mock-keychain --disable-xss-auditor --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-features=site-per-process,TranslateUI,BlinkGenPropertyTrees --no-experiments --disable-login-animations --disable-blink-features=AutomationControlled --disable-devtools-experiments --disable-ipc-flooding-protection --disable-ntp-popular-sites --disable-permissions-api
-
-      - name: Run Web Tests in ${{ matrix.browser }} with mobile emulation
-        uses: gradle/gradle-build-action@4137be6a8bf7d7133955359dbd952c0ca73b1021
+    
        
