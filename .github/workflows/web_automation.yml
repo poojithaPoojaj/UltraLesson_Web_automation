@@ -43,9 +43,7 @@ jobs:
           distribution: 'adopt'
           cache: gradle
       - name: setup 
-        uses: browser-actions/setup-node@v2
-        with:
-          node-browsers: ${{ matrix.browsers }}
+        uses: browser-actions/setup-${{ matrix.browsers }}
       - name: Run Web Tests
         uses: gradle/gradle-build-action@4137be6a8bf7d7133955359dbd952c0ca73b1021
         with:
