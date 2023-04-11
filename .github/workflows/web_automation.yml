@@ -25,9 +25,8 @@ jobs:
   web_test:
     strategy:
       matrix:
-        os: [ubuntu-latest,ubuntu-latest]
-        version: [chrome@latest,firefox@latest]
-    runs-on: ${{ matrix.os }}
+        browsers: [chrome@latest,firefox@latest]
+    runs-on: ubuntu-latest
     needs: build
     steps:
       - uses: actions/checkout@v2
