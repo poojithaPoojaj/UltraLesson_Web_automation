@@ -27,7 +27,11 @@ jobs:
       matrix:
         os: [ubuntu-latest,ubuntu-latest]
         version: [10, 12, 14]
-        browser: [chrome,chrome]
+        broswer: 
+          - chrome
+          - firefox
+          - safari
+
     runs-on: ${{ matrix.os }}
     needs: build
     steps:
@@ -42,13 +46,11 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
           cache: gradle
-      - name: setup Browsers
-      - uses: abhi1693/setup-browser@v0.3.4
-        with:
-         browser: ${{matrix.browser}}      
-         version: latest
-      
+      - name: Install dependencies
+        run: npm ci
 
+      - name: Run tests
+        run: npm run test:${{ matrix.browser }}
       - name: Run Web Tests
         uses: gradle/gradle-build-action@4137be6a8bf7d7133955359dbd952c0ca73b1021
         with:
