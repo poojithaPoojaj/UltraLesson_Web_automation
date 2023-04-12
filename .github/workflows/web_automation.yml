@@ -25,7 +25,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
      matrix:
-      browser: [chrome]
+      browser: [chromeResponsiveView]
     needs: build
     steps:
     - uses: actions/checkout@v2
@@ -36,7 +36,7 @@ jobs:
         distribution: 'adopt'
         cache: gradle
 
-    - name: Run Web Tests in Chrome with Responsive View
+    - name: Run Web Tests in Chrome if [[ "${{ matrix.browser }}" == "chromeResponsiveView" ]]; then
       run: |
         # Install Chrome
         sudo apt update
