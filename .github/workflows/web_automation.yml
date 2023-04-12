@@ -25,7 +25,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        browser: [chrome, firefox, safari,chromemobile]
+        browser: [chrome, firefox, safari,chromemobile,android, ios]
     needs: build
     steps:
       - uses: actions/checkout@v2
@@ -46,4 +46,3 @@ jobs:
         with:
           name: web_test_${{ matrix.browser }}
           path: build/web-reports
-Mobile
