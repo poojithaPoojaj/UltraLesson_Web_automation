@@ -48,3 +48,15 @@ jobs:
           --window-size=360,640 --device-scale-factor=2 \
           --user-agent="Mozilla/5.0 (Linux; Android 10; SM-G970F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.82 Mobile Safari/537.36" \
           https://your-app-url.com
+        else
+           - name: Run Web Tests in ${{ matrix.browser }}
+        uses: gradle/gradle-build-action@4137be6a8bf7d7133955359dbd952c0ca73b1021
+        with:
+          arguments: runWebTests -Dbrowser.name=${{ matrix.browser }} -Dbrowser.headless=true
+          
+         - name: Upload API Artifacts
+        uses: actions/upload-artifact@v2
+        if: ${{ always() }}
+        with:
+          name: web_test_${{ matrix.browser }}
+          path: build/web-reports
